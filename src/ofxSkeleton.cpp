@@ -38,14 +38,6 @@ ofMesh getAxisMesh(){
 	
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	
-//	ofVec3f vertices[6] = {
-//		ofVec3f(0,0,0),
-//		ofVec3f(1,0,0),
-//		ofVec3f(0,0,0),
-//		ofVec3f(0,1,0),
-//		ofVec3f(0,0,0),
-//		ofVec3f(0,0,1),
-//	};
         std::vector<glm::vec3> vertices = {
             glm::vec3(0,0,0),
             glm::vec3(1,0,0),
