@@ -38,24 +38,32 @@ ofMesh getAxisMesh(){
 	
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	
-	ofVec3f vertices[6] = {
-		ofVec3f(0,0,0),
-		ofVec3f(1,0,0),
-		ofVec3f(0,0,0),
-		ofVec3f(0,1,0),
-		ofVec3f(0,0,0),
-		ofVec3f(0,0,1),
+//	ofVec3f vertices[6] = {
+//		ofVec3f(0,0,0),
+//		ofVec3f(1,0,0),
+//		ofVec3f(0,0,0),
+//		ofVec3f(0,1,0),
+//		ofVec3f(0,0,0),
+//		ofVec3f(0,0,1),
+//	};
+        std::vector<glm::vec3> vertices = {
+            glm::vec3(0,0,0),
+            glm::vec3(1,0,0),
+            glm::vec3(0,0,0),
+            glm::vec3(0,1,0),
+            glm::vec3(0,0,0),
+            glm::vec3(0,0,1)
+        };
+    ofFloatColor colors[6] = {
+            ofColor::red,
+            ofColor::red,
+            ofColor::green,
+            ofColor::green,
+            ofColor::blue,
+            ofColor::blue,
 	};
-	ofFloatColor colors[6] = {
-		ofColor::red,
-		ofColor::red,
-		ofColor::green,
-		ofColor::green,
-		ofColor::blue,
-		ofColor::blue,
-	};
-	
-	mesh.addVertices(vertices, 6);
+
+        mesh.addVertices(vertices);
 	mesh.addColors(colors, 6);
 	return mesh;
 }
@@ -66,12 +74,12 @@ ofMesh getJointMesh(){
 	ofMesh mesh;
 	
 	// this will hold the points of a circle in the YZ-plane
-	vector<ofVec3f> verts;
+    vector<glm::vec3> verts;
 	vector<ofFloatColor> colours;
 	vector<ofIndexType> indices;
 	
 	for (int i=0; i<30; i++){	// YZ
-		verts.push_back(ofVec3f(0, sin(TWO_PI * i/30.0f), cos(TWO_PI * i/30.0f)));
+        verts.push_back(glm::vec3(0, sin(TWO_PI * i/30.0f), cos(TWO_PI * i/30.0f)));
 		colours.push_back(ofColor::red);
 		indices.push_back(i);
 	}
@@ -79,7 +87,7 @@ ofMesh getJointMesh(){
 	indices.push_back(PRIMITIVE_RESTART_INDEX);
 	
 	for (int i=0; i<30; i++){ // XZ
-		verts.push_back(ofVec3f(sin(TWO_PI * i/30.0f), 0 , cos(TWO_PI * i/30.0f)));
+        verts.push_back(glm::vec3(sin(TWO_PI * i/30.0f), 0 , cos(TWO_PI * i/30.0f)));
 		colours.push_back(ofColor::green);
 		indices.push_back(i+30);
 	}
@@ -87,7 +95,7 @@ ofMesh getJointMesh(){
 	indices.push_back(PRIMITIVE_RESTART_INDEX);
 
 	for (int i=0; i< 30; i++){ // XY
-		verts.push_back(ofVec3f(sin(TWO_PI * i/30.0f), cos(TWO_PI * i/30.0f), 0));
+        verts.push_back(glm::vec3(sin(TWO_PI * i/30.0f), cos(TWO_PI * i/30.0f), 0));
 		colours.push_back(ofColor::blue);
 		indices.push_back(i+60);
 	}
